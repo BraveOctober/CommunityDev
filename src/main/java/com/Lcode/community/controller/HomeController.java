@@ -3,6 +3,7 @@ package com.Lcode.community.controller;
 import com.Lcode.community.entity.DiscussPost;
 import com.Lcode.community.entity.Page;
 import com.Lcode.community.service.DiscussPostService;
+
 import com.Lcode.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-//@RequestMapping("/community")
 public class HomeController {
     @Autowired
     private DiscussPostService discussPostService;
@@ -36,7 +36,7 @@ public class HomeController {
             {
                 Map<String, Object> map = new HashMap<>();
                 map.put("post",disPosts);
-                map.put("user",userService.findUser(disPosts.getUserId()));
+                map.put("user",userService.findUserById(disPosts.getUserId()));
                 res.add(map);
             }
         }
